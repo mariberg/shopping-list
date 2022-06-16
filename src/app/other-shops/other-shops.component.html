@@ -1,0 +1,75 @@
+<!--Angular material expansion panel-->
+<mat-expansion-panel>
+  <mat-expansion-panel-header>
+    <mat-panel-title>Add items</mat-panel-title>
+  </mat-expansion-panel-header>
+  <form
+    action="/action_page.php"
+    #register="ngForm"
+    (ngSubmit)="onSubmit(register.value); getList()"
+  >
+    <label>Item:</label>
+    <div class="form-group">
+      <input
+        #product="ngModel"
+        class="form-control"
+        type="text"
+        name="product"
+        ngModel
+        required
+      /><br />
+
+      <span
+        [hidden]="
+          !register.form.hasError('required', 'item') || product.pristine
+        "
+        >Item required</span
+      >
+    </div>
+    <label>Comment:</label>
+    <div class="form-group">
+      <input
+        #qty="ngModel"
+        class="form-control"
+        type="text"
+        name="comment"
+        maxlength="45"
+        ngModel
+      /><br />
+      <!--max comment length is 45 so that there is enough space to display-->
+    </div>
+
+    <!--button disabled until item-field has been filled in-->
+    <button
+      mat-raised-button
+      type="submit"
+      class="btn btn-outline-secondary"
+      [disabled]="register.invalid"
+    >
+      Add to the list
+    </button>
+  </form>
+</mat-expansion-panel>
+
+<mat-card>
+  <mat-card-title>Shopping list for your other shops</mat-card-title>
+  <mat-grid-list cols="4" rowHeight="4rem" *ngFor="let item of items">
+    <mat-grid-tile>
+      <div class="tile-container1">
+        {{ item.product }}
+      </div>
+    </mat-grid-tile>
+    <mat-grid-tile>
+      <div class="tile-container2">
+        {{ item.comment }}
+      </div>
+    </mat-grid-tile>
+    <mat-grid-tile>
+      <div class="tile-container3" colspan="2">
+        <button mat-list-item class="delete" (click)="deleteItem(item)">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </div>
+    </mat-grid-tile>
+  </mat-grid-list>
+</mat-card>

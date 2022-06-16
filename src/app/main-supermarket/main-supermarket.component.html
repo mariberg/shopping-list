@@ -1,0 +1,121 @@
+<!--Angular material Expansion panel - adding new items-->
+<mat-expansion-panel>
+  <mat-expansion-panel-header>
+    <mat-panel-title> Add items </mat-panel-title>
+  </mat-expansion-panel-header>
+
+  <form
+    action="/action_page.php"
+    #register="ngForm"
+    (ngSubmit)="onSubmit(register.value); getList()"
+  >
+    <label>Item:</label>
+    <div class="form-group">
+      <input
+        #searchBox
+        id="search-box"
+        (input)="search(searchBox.value)"
+        #product="ngModel"
+        class="form-control"
+        type="text"
+        name="product"
+        ngModel
+        required
+      />
+      <span
+        [hidden]="
+          !register.form.hasError('required', 'product') || product.pristine
+        "
+        >Item required</span
+      >
+
+      <ul class="search-result">
+        <li *ngFor="let product of products$ | async">
+          <a routerLink="/details/{{ product._id }} ">
+            {{ product.product }}
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <label>Quantity:</label>
+    <div class="form-group">
+      <input
+        #quantity="ngModel"
+        class="form-control"
+        type="number"
+        name="quantity"
+        placeholder="1"
+        ngModel
+        required
+      /><br />
+
+      <span
+        [hidden]="
+          !register.form.hasError('required', 'qty') || quantity.pristine
+        "
+      ></span>
+    </div>
+    <p>Product group:</p>
+    <select class="form-control" name="productGroup" ngModel>
+      <option>Fruit and Veg</option>
+      <option>Bakery</option>
+      <option>Home baking</option>
+      <option>Household</option>
+      <option>Health and Beauty</option>
+      <option>Frozen</option>
+      <option>Meat and Fish</option>
+      <option>Dairy</option>
+      <option>Food cupboard</option>
+      <option>Other</option>
+    </select>
+    <br />
+
+    <button mat-raised-button type="submit" [disabled]="register.invalid">
+      Add to the list
+    </button>
+  </form>
+</mat-expansion-panel>
+
+<!--Angular material mat card - display shopping list-->
+<mat-card>
+  <mat-card-title>Shopping list for your main supermarket</mat-card-title>
+  <!--en saa muutettua .mat-grid-tile-content vasemmalle, vaan se pytyy kokoajan alig-items: center
+  ylimaaraiset tile-container divit ei ole auttaneet-->
+  <mat-grid-list cols="4" rowHeight="4rem" *ngFor="let item of items">
+    <div class="tiles-container">
+      <mat-grid-tile>
+        <div class="tile-container1">
+          {{ item.product }}
+        </div>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <div class="tile-container2">
+          <!--tama ei toimi-->
+          {{ item.quantity }}
+        </div>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <div class="tile-container3" colspan="2">
+          <button mat-list-item class="delete" (click)="deleteItem(item)">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </div>
+      </mat-grid-tile>
+    </div>
+  </mat-grid-list>
+</mat-card>
+
+<mat-card>
+  <button mat-raised-button class="settings-button">
+    <mat-icon>settings</mat-icon>
+    <a routerLink="../settings">Settings</a>
+  </button>
+</mat-card>
+
+<!--Input to child component, selectedItem is going to be in item details component's item variable
+ NgIf > input only after the user has selected a product, otherwise
+Angular will try to send request to the server with id '0' as soon as component is loaded-->
+<div *ngIf="selectedProduct !== undefined">
+  <app-item-details [product]="selectedProduct"></app-item-details>
+</div>

@@ -1,0 +1,49 @@
+<!-- tämä komponentti on luotu: Material design sidenav valmiskomponentilla -->
+
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav
+    #drawer
+    class="sidenav"
+    fixedInViewport
+    [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+    [mode]="(isHandset$ | async) ? 'over' : 'side'"
+    [opened]="(isHandset$ | async) === false"
+  >
+    <mat-toolbar>Menu</mat-toolbar>
+
+    <mat-nav-list>
+      <a mat-list-item routerLink="/frontPage">Home</a>
+      <a mat-list-item routerLink="/mainSupermarket">Main Supermarket</a>
+      <a mat-list-item routerLink="/otherShops">Other Shops</a>
+
+      <!--login, logout and register are shown depending on the user's login-status
+      on authService-->
+      <span *ngIf="!login">
+        <a mat-list-item routerLink="/login">Login</a></span
+      >
+      <span *ngIf="login">
+        <a mat-list-item routerLink="login" (click)="logOut()">Logout</a></span
+      >
+      <span *ngIf="!login">
+        <a mat-list-item routerLink="/register">Register</a></span
+      >
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar color="primary">
+      <button
+        type="button"
+        aria-label="Toggle sidenav"
+        mat-icon-button
+        (click)="drawer.toggle()"
+        *ngIf="isHandset$ | async"
+      >
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+      <span class="name">My Shopping List</span>
+    </mat-toolbar>
+
+    <!-- Add Content Here-->
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>

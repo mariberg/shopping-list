@@ -1,0 +1,11 @@
+mat-card {
+  margin: 20px;
+}
+
+mat-list-item {
+  cursor: grab;
+}
+
+mat-list-item:nth-child(odd) {
+  background-color: #648082;
+}

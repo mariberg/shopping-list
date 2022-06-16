@@ -1,0 +1,60 @@
+<!--This is Angular template-driven form-->
+
+<mat-card>
+  <div class="card-body">
+    <p>Register</p>
+    <form action="/action_page.php" #f="ngForm" (ngSubmit)="onSubmit(f.value)">
+      <div class="box">
+        <label>Username:</label>
+        <div class="form-group">
+          <input type="text" name="username" ngModel required minlength="6" />
+          <!--error message if username is blank-->
+          <span
+            [hidden]="!f.form.hasError('required', 'username') || f.pristine"
+            >Username is required</span
+          >
+          <!--error message if username is too short-->
+          <span [hidden]="!f.form.hasError('minlength', 'username')"
+            >Username must be at least 6 characters</span
+          >
+          <!--TODO tarkastus, onko kyseinen usernimi jo käytössä, jokaisen usernamen tulisi olla uniikki-->
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Password:</label>
+        <div class="form-group">
+          <input
+            #password="ngModel"
+            class="form-control"
+            type="password"
+            name="password"
+            ngModel
+            required
+            minlength="8"
+          />
+          <span
+            [hidden]="
+              !f.form.hasError('required', 'password') || password.pristine
+            "
+            >Password is required</span
+          >
+
+          <span [hidden]="!f.form.hasError('minlength', 'password')"
+            >Password must be at least 8 characters</span
+          >
+        </div>
+      </div>
+
+      <div class="form-group">
+        <button mat-raised-button type="submit" [disabled]="f.invalid">
+          Register
+        </button>
+        <span *ngIf="error">{{ error }} ></span>
+        <button mat-raised-button class="cancel-button">
+          <a routerLink="../login">Cancel</a>
+        </button>
+      </div>
+    </form>
+  </div>
+</mat-card>

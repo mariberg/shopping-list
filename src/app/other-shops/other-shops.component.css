@@ -1,0 +1,37 @@
+mat-expansion-panel {
+  margin: 20px;
+}
+
+mat-card {
+  margin: 20px;
+}
+
+button {
+  background-color: #4e6465;
+  cursor: grab;
+  border: 0;
+  size: 4em;
+  margin-top: 10px;
+}
+
+.delete {
+  height: 30px;
+  width: 60px;
+  margin-left: 200px;
+  color: darkgrey;
+}
+
+.tile-container1 {
+  width: 100%;
+}
+
+.tile-container2 {
+  width: 100%;
+}
+
+.tile-container3 {
+  width: 100%;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+}

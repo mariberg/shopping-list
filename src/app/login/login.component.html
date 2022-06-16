@@ -1,0 +1,57 @@
+<mat-card>
+  <div id="container">
+    <p>Login</p>
+
+    <form action="/action_page.php" #f="ngForm" (ngSubmit)="onSubmit(f.value)">
+      <div class="box">
+        <label>Username:</label>
+        <div class="form-group">
+          <input type="text" name="username" ngModel required />
+
+          <span
+            [hidden]="!f.form.hasError('required', 'username') || f.pristine"
+            >Username is required</span
+          >
+        </div>
+      </div>
+      <div class="box">
+        <label>Password:</label>
+        <div class="form-group">
+          <input
+            #password="ngModel"
+            type="text"
+            type="password"
+            name="password"
+            ngModel
+            required
+            minlength="5"
+          />
+
+          <!--error if password blank-->
+          <span
+            [hidden]="
+              !f.form.hasError('required', 'password') || password.pristine
+            "
+            >Password is required</span
+          >
+          <!--error if password too short-->
+          <span [hidden]="!f.form.hasError('minlength', 'password')"
+            >Password is too short</span
+          >
+        </div>
+      </div>
+      <div class="box">
+        <!--button invalid until fille in correctly-->
+        <button
+          mat-raised-button
+          type="submit"
+          class="btn btn-primary"
+          [disabled]="f.invalid"
+        >
+          Login
+        </button>
+        <span *ngIf="error">{{ error }}</span>
+      </div>
+    </form>
+  </div>
+</mat-card>

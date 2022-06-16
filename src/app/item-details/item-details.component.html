@@ -1,0 +1,23 @@
+<!--This is main-supermarket component's child component-->
+
+<!--Tour of Hero -tutorial has been used for this component-->
+
+<!--this shows the product, that the user has selected. Product name is
+read only, quantity can be amended before submitting-->
+<mat-card>
+  <div *ngIf="product">
+    <div>
+      <label id="item">
+        Item: <br />
+        <input readonly [(ngModel)]="product.product" placeholder="product" />
+        <br />
+      </label>
+      <label id="qty">
+        Quantity: <br />
+        <input [(ngModel)]="product.quantity" placeholder="quantity" />
+      </label>
+    </div>
+    <button mat-raised-button (click)="save()">Add to the list</button>
+    <button mat-raised-button (click)="goBack()">Cancel</button>
+  </div>
+</mat-card>

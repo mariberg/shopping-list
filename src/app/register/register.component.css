@@ -1,0 +1,16 @@
+mat-card {
+  margin: 20px;
+}
+
+button {
+  margin-top: 20px;
+}
+
+.cancel-button {
+  margin-left: 10px;
+}
+
+a {
+  color: white;
+  text-decoration: none;
+}

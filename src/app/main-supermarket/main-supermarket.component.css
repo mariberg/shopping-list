@@ -1,0 +1,100 @@
+#add {
+  margin-left: 30px;
+}
+
+#list {
+  margin-left: 30px;
+}
+
+mat-expansion-panel {
+  margin: 20px;
+}
+
+mat-card {
+  margin: 20px;
+}
+
+button {
+  margin-top: 10px;
+  background-color: #4e6465;
+  cursor: grab;
+  border: 0;
+  size: 4em;
+}
+
+.delete {
+  height: 30px;
+  width: 60px;
+  margin-left: 200px;
+  color: darkgrey;
+}
+
+.tile-container1 {
+  width: 100%;
+}
+
+.tile-container2 {
+  width: 100%;
+}
+
+.tile-container3 {
+  width: 100%;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+}
+
+a {
+  color: white;
+  text-decoration: none;
+}
+
+mat-icon {
+  margin-right: 5px;
+}
+
+/* Below styles are from the Tour of Heroes tutorial */
+
+li {
+  list-style-type: none;
+}
+
+.search-result li p {
+  border-bottom: 1px solid gray;
+  border-left: 1px solid gray;
+  border-right: 1px solid gray;
+  display: inline-block;
+  width: 100%;
+  max-width: 600px;
+  padding: 0.5rem;
+  box-sizing: border-box;
+  text-decoration: none;
+  color: black;
+}
+
+.search-result li p:hover {
+  background-color: #435a60;
+  color: white;
+}
+
+ul.search-result {
+  margin-top: 0;
+  padding-left: 0;
+}
+
+.search-result .badge {
+  display: inline-block;
+  font-size: small;
+  color: white;
+  padding: 0.8em 0.7em 0 0.7em;
+  background-color: #405061;
+  line-height: 1em;
+  position: relative;
+  left: -1px;
+  top: -4px;
+  height: 1.8em;
+  min-width: 16px;
+  text-align: right;
+  margin-right: 0.8em;
+  border-radius: 4px 0 0 4px;
+}
