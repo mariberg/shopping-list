@@ -30,7 +30,6 @@ import { MatExpansionModule } from '@angular/material/expansion';
 import { MatCardModule } from '@angular/material/card';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { MatGridListModule } from '@angular/material/grid-list';
-import { MessagesComponent } from './messages/messages.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +42,6 @@ import { MessagesComponent } from './messages/messages.component';
     RegisterComponent,
     ItemDetailsComponent,
     SettingsComponent,
-    MessagesComponent,
   ],
   imports: [
     BrowserModule,
