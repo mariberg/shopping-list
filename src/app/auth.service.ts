@@ -62,11 +62,6 @@ export class AuthService {
       .pipe(
         map((res: any) => {
           console.log(res); // this kind of response is logged:
-          /*
-        {success: true, message:
-          "Tässä on valmis Token!",
-          token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZ…zNzV9.x1gWEg9DtoPtEUUHlR8aDgpuzG6NBNJpa2L-MEhyraQ"}
-        */
 
           const token = res['token']; // token from the response
           if (token) {
@@ -87,7 +82,7 @@ export class AuthService {
                 );
                 this.loginTrue(); // status in navbar changed to login:true
                 console.log('login onnistui');
-                return true; // saatiin token
+                return true;
               } else {
                 console.log('login epäonnistui');
                 return false; // couldn't get token

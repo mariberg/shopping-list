@@ -59,8 +59,7 @@ export class RegisterComponent implements OnInit {
       this.lists.push(list);
     });
 
-    //TODO navigating to Login component after registration completed, this should be modified to
-    //TODO be more user friendly
+    //TODO navigating to Login component after registration completed, this should be modified to be more user friendly
     this.router.navigate(['../login'], { relativeTo: this.route });
   }
 

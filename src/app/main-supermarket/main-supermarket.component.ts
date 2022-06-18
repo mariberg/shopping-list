@@ -42,18 +42,8 @@ export class MainSupermarketComponent implements OnInit {
         this.items.push(item);
       });
 
-    //TODO Formin pitaisi viela tyhjentya sen jalkeen kun push on tapahtunut ja käyttäjälle pitäisi tulla
-    //TODO viesti siita, etta tuote on lisatty listalle!
+    //TODO Form should empty after adding the product and the user should get notification that product has been added
   }
-  //TODO Product pitaisi myos pushata 'products'-taulukkoon, koska kyseessa uusi tuote
-
-  /*
-  getProducts(): void {
-    this.productService
-      .getProducts()
-      .subscribe((products) => (this.products = products));
-  }
-  */
 
   // deleting selected item from the list
   deleteItem(item: MainListItem): void {

@@ -10,7 +10,7 @@ import { RegisterComponent } from './register/register.component';
 import { SettingsComponent } from './settings/settings.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/frontPage', pathMatch: 'full' }, // root, lcalhost 4200
+  { path: '', redirectTo: '/login', pathMatch: 'full' }, // root, lcalhost 4200
   { path: 'frontPage', component: FrontPageComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'login', component: LoginComponent },

@@ -34,7 +34,7 @@ export class ItemService {
     }; //token is sent with header
     const url = `${this.itemurl}/${mytoken.username}`; // username from the token is added to url
     return this.http.get<MainListItem[]>(url, tokenheaders);
-    //TODO tahan voi lisata virheenkasittelyn
+    //TODO error handling
   }
 
   // posting a new item on user's mainListItems
